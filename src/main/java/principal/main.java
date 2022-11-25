@@ -39,39 +39,59 @@ public class main {
             GestorCitasMedicas gCitas = new GestorCitasMedicas();
             GestorMedicos gMedicos = new GestorMedicos();
             GestorPacientes gPacientes = new GestorPacientes();
-
+            /*
+                Pagar cita -> ingreso dinero - id cita, verificaciones -> costo - lo que me da el cliente -> vuelto
+                txt citas pagadas, 
+                precio cita -> switch con especialidades 
+                (Odontologia (80), Endocrinologia(60), Psiquiatria (40), Medicina General(30), Ginecologia (100)).  
+                Mocks -> GestorPagos, tratar de utilizar tambien el Gestor Citas u otras clases
+                
+             */
             System.out.println("-------BIENVENIDO AL SISTEMA-------");
-            System.out.println("1. AGENDAR CITA");
-            System.out.println("2. LISTAR CITAS");
-            System.out.println("3. MODIFICAR CITA");
-            System.out.println("4. CANCELAR CITA");
-            System.out.println("5. GESTION MEDICOS");
-            System.out.println("6. GESTION PACIENTES");
-            System.out.println("7. SALIR");
-            int opc = Integer.parseInt(in.nextLine());
+            System.out.println("1. GESTION CITAS");
+            System.out.println("2. GESTION MEDICOS");
+            System.out.println("3. GESTION PACIENTES");
+            System.out.println("4. SALIR");
+            int opc = 0;
+            opc = Integer.parseInt(in.nextLine());
             switch (opc) {
-                case 1:                    
-                    gCitas.registrarCita();
+                case 1:
+                    System.out.println("-------GESTION DE CITAS-------");
+                    System.out.println("1. AGENDAR CITA");
+                    System.out.println("2. COMPLETAR CITA");
+                    System.out.println("3. LISTAR CITAS");
+                    System.out.println("4. MODIFICAR CITA");
+                    System.out.println("5. ELIMINAR CITA");
+                    System.out.println("6. SALIR");
+                    opc = in.nextInt();
+                    switch (opc) {
+                        case 1:
+                            gCitas.registrarCita();
+                            break;
+                        case 2:
+                            gCitas.completarCita();
+                            break;
+                        case 3:
+                            ArrayList<Cita> citas = gCitas.obtenerTodasLasCitas();
+                            for (Cita cita : citas) {
+                                System.out.println(cita.toString());
+                            }
+                            break;
+                        case 4:
+                            System.out.println("INGRESE EL ID DE LA CITA A MODIFICAR");
+                            String idCita = in.nextLine();
+                            String mensajeCita = gCitas.modificarCita(idCita);
+                            System.out.println(mensajeCita);
+                            break;
+                        case 5:
+                            System.out.println("INGRESE EL ID DE LA CITA A ELIMINAR");
+                            String id = in.nextLine();
+                            System.out.println(gCitas.eliminarCita(id));
+                            break;
+                    }
+
                     break;
                 case 2:
-                    ArrayList<Cita> citas = gCitas.obtenerTodasLasCitas();
-                    for(Cita cita: citas) {
-                        System.out.println(cita.toString());
-                    }
-                    
-                    break;
-                case 3:
-                    System.out.println("INGRESE EL ID DE LA CITA A MODIFICAR");
-                    String idCita = in.nextLine();
-                    String mensajeCita = gCitas.modificarCita(idCita);
-                    System.out.println(mensajeCita);
-                    break;
-                case 4:
-                    System.out.println("INGRESE EL ID DE LA CITA A ELIMINAR");
-                    String id = in.nextLine();
-                    System.out.println(gCitas.eliminarCita(id));
-                    break;
-                case 5:
                     System.out.println("-------GESTION DE MEDICOS-------");
                     System.out.println("1. AÑADIR MEDICO");
                     System.out.println("2. ELIMINAR MEDICO");
@@ -102,7 +122,7 @@ public class main {
                             break;
                     }
                     break;
-                case 6:
+                case 3:
                     System.out.println("-------GESTION DE PACIENTES-------");
                     System.out.println("1. AÑADIR PACIENTE");
                     System.out.println("2. MODIFICAR PACIENTE");
@@ -133,7 +153,7 @@ public class main {
                             break;
                     }
                     break;
-                case 7:
+                case 4:
                     System.out.println("Saliendo del sistema...");
                     break;
                 default:

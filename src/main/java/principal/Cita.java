@@ -70,4 +70,24 @@ public class Cita {
         return this.id;
     }
 
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
 }

@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import persistencia.CitasCompletadasPersistencia;
 import persistencia.CitasPersistencia;
 import principal.Cita;
+import principal.CitaCompletada;
 
 /**
  *
@@ -31,6 +33,11 @@ public class GestorCitasMedicas {
         CitasPersistencia citaP = new CitasPersistencia();
         return citaP.recuperarCitas();
     }
+    
+    public ArrayList<CitaCompletada> obtenerTodasLasCitasCompletadas() {
+        CitasCompletadasPersistencia citasCompletadasP = new CitasCompletadasPersistencia();
+        return citasCompletadasP.recuperarCitas();
+    }
 
     public Cita obtenerCita(String idCita) {
         CitasPersistencia citaP = new CitasPersistencia();
@@ -39,6 +46,38 @@ public class GestorCitasMedicas {
             return null;
         }
         return cita;
+    }
+    
+    public CitaCompletada obtenerCitaCompletada(String idCita) {
+        CitasCompletadasPersistencia citasP = new CitasCompletadasPersistencia();
+        CitaCompletada cita = citasP.obtenerCita(idCita);
+        if (cita == null) {
+            return null;
+        }
+        return cita;
+    }
+    
+    public CitaCompletada completarCita() {
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("INGRESE EL ID DE LA CITA:");
+        String idCita = in.nextLine();
+        System.out.println("INGRESE EL PRECIO DE LA CITA:");
+        double precio = Double.parseDouble(in.nextLine());
+        
+        CitasPersistencia citasP = new CitasPersistencia();
+        Cita cita = citasP.obtenerCita(idCita);
+        if (cita == null) {
+            return null;
+        }
+        CitaCompletada citaCompletada = new CitaCompletada(
+                cita.getId(), cita.getFecha(),
+                cita.getEspecialidad(), cita.getDescripcion(),
+                true, precio, cita.getMedico(), cita.getPaciente());
+        CitasCompletadasPersistencia citasCompletadasP = new CitasCompletadasPersistencia();
+        citasP.eliminarCita(cita);
+        citasCompletadasP.registrarCita(citaCompletada);
+        return citaCompletada;
     }
 
     private ArrayList<String> recogerDatosParaCita() {
