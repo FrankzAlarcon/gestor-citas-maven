@@ -5,10 +5,20 @@
  */
 package gestores;
 
+import principal.Cita;
+
 /**
  *
  * @author Frankz
  */
-public interface GestorPagos {
-    public int calcularVuelto(int costo, int valorPagado);
+public class GestorPagos {
+    
+    public double calcularPrecioCita(Cita cita) {
+        return 0;
+    }
+    
+    public double calcularVuelto(double saldo, double efectivo) {
+        if (saldo > efectivo) return 0;
+        return efectivo - saldo;
+    }
 }

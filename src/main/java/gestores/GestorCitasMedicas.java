@@ -119,12 +119,37 @@ public class GestorCitasMedicas {
     private ArrayList<String> recogerDatosModificacion() {
         Scanner in = new Scanner(System.in);
         ArrayList<String> med = new ArrayList<String>();
-
+        //Odontologia (80), Endocrinologia(60), Psiquiatria (40), Medicina General(30), Ginecologia (100)). 
         System.out.println("=== INGRESE LOS CAMBIOS ===");
         System.out.println("INGRESE FECHA DE CONSULTA [aa/mm/dd/hh:min]:");
         med.add(in.nextLine());
         System.out.println("INGRESE ESPECIALIDAD:");
-        med.add(in.nextLine());
+        System.out.println("1.- Odontologia");
+        System.out.println("2.- Endocrinologia");
+        System.out.println("3.- Psiquiatria");
+        System.out.println("4.- Medicina General");
+        System.out.println("5.- Ginecologia");
+        int opc = Integer.parseInt(in.nextLine());
+        switch (opc) {
+            case 1:
+                med.add("Odontologia");
+                break;
+            case 2: 
+                med.add("Endocrinologia");
+                break;
+            case 3:
+                med.add("Psiquiatria");
+                break;
+            case 4:
+                med.add("Medicina General");
+                break;
+            case 5:
+                med.add("Ginecologia");
+                break;
+            default:
+                med.add("Medicina General");
+                break;                
+        }
         System.out.println("INGRESE DESCRIPCION:");
         med.add(in.nextLine());
         //con el ci se encuentra y se obtiene el objeto medico desde el csv

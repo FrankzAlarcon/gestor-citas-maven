@@ -4,20 +4,44 @@
  * and open the template in the editor.
  */
 package gestores;
+
+import java.time.LocalDateTime;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Before;
-import org.mockito.Mockito;
-import gestores.GestorPagos;
+import principal.Cita;
+import principal.Medico;
+
 /**
  *
  * @author Frankz
  */
-public class GestorPagosTest {    
-    @Test
-    public void given_payment_when_is_correct_then_ok() {  
-        GestorPagos gestorPagos = Mockito.mock(GestorPagos.class);
-        Mockito.when(gestorPagos.calcularVuelto(90, 100)).thenReturn(10);
-        assertEquals(10, gestorPagos.calcularVuelto(90, 100));        
+public class GestorPagosTest {
+    
+    public GestorPagosTest() {
     }
+
+    /**
+     * Test of calcularVuelto method, of class GestorPagos.
+     */
+    
+    @Test
+    public void given_cita_when_calcularPrecioCita_then_ok() {
+        GestorPagos gestorPagos =  new GestorPagos();
+        GestorCitasMedicas gestorCitas = new GestorCitasMedicas();
+        Cita cita = gestorCitas.obtenerCita("2589372");
+        double esperado = 90;
+        double actual = gestorPagos.calcularPrecioCita(cita);
+        
+        assertEquals(esperado, actual, 0.01);
+    }
+    
+    @Test
+    public void given_saldo_y_efectivo_when_calcularVuelto_then_ok() {
+        GestorPagos gestorPagos =  new GestorPagos();
+        double esperado = 10.0;
+        double actual = gestorPagos.calcularVuelto(70, 80);
+        
+        assertEquals(esperado, actual, 0.1);        
+    }    
+    
 }

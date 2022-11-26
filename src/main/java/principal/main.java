@@ -43,7 +43,7 @@ public class main {
                 Pagar cita -> ingreso dinero - id cita, verificaciones -> costo - lo que me da el cliente -> vuelto
                 txt citas pagadas, 
                 precio cita -> switch con especialidades 
-                (Odontologia (80), Endocrinologia(60), Psiquiatria (40), Medicina General(30), Ginecologia (100)).  
+                ( 
                 Mocks -> GestorPagos, tratar de utilizar tambien el Gestor Citas u otras clases
                 
              */
