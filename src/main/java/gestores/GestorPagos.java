@@ -9,6 +9,6 @@ package gestores;
  *
  * @author Frankz
  */
-public interface IGestorPagos {
+public interface GestorPagos {
     public int calcularVuelto(int costo, int valorPagado);
 }
