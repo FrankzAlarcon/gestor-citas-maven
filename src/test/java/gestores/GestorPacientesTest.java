@@ -21,16 +21,21 @@ import persistencia.PacientesPersistencia;
  */
 public class GestorPacientesTest {
     
-    public GestorPacientesTest() {
+    GestorPacientes gestorP = null;
+    PacientesPersistencia pacienteP = null;
+    
+    @Before
+    public void SetUp(){
+        gestorP = new GestorPacientes();
+        pacienteP = new PacientesPersistencia();
     }
     
     @Test
     public void given_cedula_when_eliminarPaciente_then_ok(){
-        GestorPacientes gestorP = new GestorPacientes();
-        PacientesPersistencia pacienteP = new PacientesPersistencia();
         Paciente paciente1 = gestorP.obtenerPaciente("1250395702");
-        gestorP.eliminarPaciente(paciente1.getCedula());        
-        assertNull(gestorP.obtenerPaciente(paciente1.getCedula()));
+        gestorP.eliminarPaciente(paciente1.getCedula());
+        Paciente paciente2 = gestorP.obtenerPaciente("1250395702");
+        assertNull(paciente2);
         pacienteP.registrarPaciente(paciente1);
     }
     
