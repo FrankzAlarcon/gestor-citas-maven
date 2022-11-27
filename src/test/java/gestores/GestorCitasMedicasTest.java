@@ -8,73 +8,35 @@ package gestores;
 import org.hamcrest.core.Is;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import persistencia.CitasPersistencia;
 import principal.Cita;
+import principal.CitaCompletada;
 
 /**
  *
  * @author Frankz
  */
 public class GestorCitasMedicasTest {
-    
-    public GestorCitasMedicasTest() {
+    GestorCitasMedicas gestorCitas = null;
+    @Before
+    public void setUp() {
+        this.gestorCitas = new GestorCitasMedicas();
     }
-
-    /**
-     * Test of obtenerTodasLasCitas method, of class GestorCitasMedicas.
-     */
     @Test
-    public void testObtenerTodasLasCitas() {
-    }
-
-    /**
-     * Test of obtenerTodasLasCitasCompletadas method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testObtenerTodasLasCitasCompletadas() {
-    }
-
-    /**
-     * Test of obtenerCita method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testObtenerCita() {
+    public void given_idCita_y_precio_when_completarCita_then_ok() {        
+        String idCita = "2549375";
+        Cita respaldoCita = gestorCitas.obtenerCita(idCita);
+        CitaCompletada citaCompletada = gestorCitas.completarCita(idCita);
+        Cita cita = gestorCitas.obtenerCita(idCita);
+        CitaCompletada citaCompletadaObtenida = gestorCitas
+                .obtenerCitaCompletada(idCita);
         
+        assertNull(cita);
+        assertEquals(citaCompletada.toString(), 
+                citaCompletadaObtenida.toString());
+        
+        respaldoCita.registrar();
+        citaCompletada.cancelar();
     }
-
-    /**
-     * Test of obtenerCitaCompletada method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testObtenerCitaCompletada() {
-    }
-
-    /**
-     * Test of completarCita method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testCompletarCita() {
-    }
-
-    /**
-     * Test of registrarCita method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testRegistrarCita() {
-    }
-
-    /**
-     * Test of modificarCita method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testModificarCita() {
-    }
-
-    /**
-     * Test of eliminarCita method, of class GestorCitasMedicas.
-     */
-    @Test
-    public void testEliminarCita() {
-    }
-    
 }

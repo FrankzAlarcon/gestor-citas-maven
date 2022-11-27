@@ -57,16 +57,19 @@ public class GestorCitasMedicas {
         return cita;
     }
     
-    public CitaCompletada completarCita(String idCita, double precio) {        
+    public CitaCompletada completarCita(String idCita) {        
         CitasPersistencia citasP = new CitasPersistencia();
+        GestorPagos gestorPagos = new GestorPagos();
         Cita cita = citasP.obtenerCita(idCita);
         if (cita == null) {
             return null;
         }
+        double precioCita = gestorPagos.calcularPrecioCita(cita);
+        // Crea la cita completa
         CitaCompletada citaCompletada = new CitaCompletada(
                 cita.getId(), cita.getFecha(),
                 cita.getEspecialidad(), cita.getDescripcion(),
-                true, precio, cita.getMedico(), cita.getPaciente());
+                true, precioCita, cita.getMedico(), cita.getPaciente());
         CitasCompletadasPersistencia citasCompletadasP = new 
         CitasCompletadasPersistencia();
         citasP.eliminarCita(cita);

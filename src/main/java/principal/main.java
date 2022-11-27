@@ -72,9 +72,7 @@ public class main {
                         case 2:
                             System.out.println("INGRESE EL ID DE LA CITA:");
                             idCita = in.nextLine();
-                            System.out.println("INGRESE EL PRECIO DE LA CITA:");
-                            double precio = Double.parseDouble(in.nextLine());
-                            gCitas.completarCita(idCita, precio);
+                            gCitas.completarCita(idCita);
                             break;
                         case 3:
                             ArrayList<Cita> citas = gCitas.obtenerTodasLasCitas();

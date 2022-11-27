@@ -12,8 +12,7 @@ import principal.Cita;
  * @author Frankz
  */
 public class GestorPagos {
-    
-    
+        
     public double calcularPrecioCita(Cita cita) {
         final double PRECIO_BASE = 10.0;
         double precio = PRECIO_BASE;
