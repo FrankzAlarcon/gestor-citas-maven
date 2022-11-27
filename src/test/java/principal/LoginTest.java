@@ -21,10 +21,10 @@ public class LoginTest {
      * Test of validarCredenciales method, of class Login.
      */
     @Test
-    public void testValidarCredenciales() {
-        // crear un objeto login
+    public void given_user_and_password_when_login_then_ok() {
+        Login login = new Login("1234567890","admin");
         
-        // assertTrue               
+        assertTrue(login.validarCredenciales());  
     }
     
 }

@@ -23,7 +23,7 @@ public class Login {
 
     private AdministradorPersistencia adminPersistencia = new AdministradorPersistencia();
     
-
+    
     public Login(String usuario, String contrasenia) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
@@ -50,5 +50,5 @@ public class Login {
             }
         }
     }
-
+    
 }
