@@ -66,4 +66,9 @@ public class GestorPagos {
         
         return Math.floor(precioPorMes * 10) / 10;
     }
+    
+    public boolean esTarjetaAceptada(ITarjetaCredito tarjeta, String numero) {
+        boolean esValida = tarjeta.esValida(numero);
+        return esValida;
+    }
 }

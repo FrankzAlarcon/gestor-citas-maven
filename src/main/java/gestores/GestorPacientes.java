@@ -32,6 +32,14 @@ public class GestorPacientes {
         return med;
     }
 
+    public String[] obtenerAntecedentes(
+            IHistoriaClinica historiaClinica,
+            String cedula
+    ) {
+        String[] antecedentes = historiaClinica.obtenerAntecedentes(cedula);
+        return antecedentes;
+    }
+
     public void registrarPaciente() {
         //Obtencion de datos
         ArrayList<String> med = recogerDatosPaciente();
