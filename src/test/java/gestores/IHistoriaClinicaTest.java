@@ -23,6 +23,6 @@ public class IHistoriaClinicaTest {
         
         GestorPacientes gestorPacientes = new GestorPacientes();
         assertArrayEquals(new String[]{"Conjuntivitis","Diabetes","Gastritis"},
-                gestorPacientes.obtenerAntecedentes(historiaClinica, ""));
+                gestorPacientes.obtenerAntecedentes(historiaClinica, "123456789"));
     }
 }
