@@ -52,7 +52,7 @@ public class GestorPagos {
         if (meses == 1) {
             return precioPorMes;
         }
-        if (meses < 1 && meses < 5) {
+        if (meses > 1 && meses < 5) {
             precioPorMes = precioPorMes * 1.05;
         }
         if (meses > 5 && meses < 10) {
@@ -61,8 +61,10 @@ public class GestorPagos {
         if (meses > 10) {
             precioPorMes = precioPorMes * 1.25;
         }
+        System.out.println("Antes " + precioPorMes);
         precioPorMes = precioPorMes / meses;
-        System.out.println("precio " + precioPorMes);        
-        return Math.ceil(precioPorMes * 10) / 10;
+        System.out.println("precio " + precioPorMes);
+        
+        return Math.floor(precioPorMes * 10) / 10;
     }
 }

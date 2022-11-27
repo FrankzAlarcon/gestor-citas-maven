@@ -48,7 +48,7 @@ public class GestorPagosTest {
     @Test
     public void given_precio_y_meses_when_diferirPagoEnMeses_then_ok() {
         GestorPagos gestorPagos =  new GestorPagos();
-        double esperado = 11.5;
+        double esperado = 11.4;
         double actual = gestorPagos.diferirPagoEnMeses(110, 12);
         assertEquals(esperado, actual, 0.01);
     }
