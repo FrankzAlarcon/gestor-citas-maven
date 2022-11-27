@@ -29,9 +29,8 @@ public class GestorPacientesTest {
         GestorPacientes gestorP = new GestorPacientes();
         PacientesPersistencia pacienteP = new PacientesPersistencia();
         Paciente paciente1 = gestorP.obtenerPaciente("1250395702");
-        gestorP.eliminarPaciente(paciente1.getCedula());
-        Paciente paciente2 = gestorP.obtenerPaciente("1250395702");
-        assertNull(paciente2);
+        gestorP.eliminarPaciente(paciente1.getCedula());        
+        assertNull(gestorP.obtenerPaciente(paciente1.getCedula()));
         pacienteP.registrarPaciente(paciente1);
     }
     

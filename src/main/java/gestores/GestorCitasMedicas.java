@@ -57,14 +57,7 @@ public class GestorCitasMedicas {
         return cita;
     }
     
-    public CitaCompletada completarCita() {
-        Scanner in = new Scanner(System.in);
-        
-        System.out.println("INGRESE EL ID DE LA CITA:");
-        String idCita = in.nextLine();
-        System.out.println("INGRESE EL PRECIO DE LA CITA:");
-        double precio = Double.parseDouble(in.nextLine());
-        
+    public CitaCompletada completarCita(String idCita, double precio) {        
         CitasPersistencia citasP = new CitasPersistencia();
         Cita cita = citasP.obtenerCita(idCita);
         if (cita == null) {
@@ -74,7 +67,8 @@ public class GestorCitasMedicas {
                 cita.getId(), cita.getFecha(),
                 cita.getEspecialidad(), cita.getDescripcion(),
                 true, precio, cita.getMedico(), cita.getPaciente());
-        CitasCompletadasPersistencia citasCompletadasP = new CitasCompletadasPersistencia();
+        CitasCompletadasPersistencia citasCompletadasP = new 
+        CitasCompletadasPersistencia();
         citasP.eliminarCita(cita);
         citasCompletadasP.registrarCita(citaCompletada);
         return citaCompletada;

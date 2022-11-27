@@ -53,6 +53,7 @@ public class main {
             System.out.println("3. GESTION PACIENTES");
             System.out.println("4. SALIR");
             int opc = 0;
+            String idCita = "";
             opc = Integer.parseInt(in.nextLine());
             switch (opc) {
                 case 1:
@@ -69,7 +70,11 @@ public class main {
                             gCitas.registrarCita();
                             break;
                         case 2:
-                            gCitas.completarCita();
+                            System.out.println("INGRESE EL ID DE LA CITA:");
+                            idCita = in.nextLine();
+                            System.out.println("INGRESE EL PRECIO DE LA CITA:");
+                            double precio = Double.parseDouble(in.nextLine());
+                            gCitas.completarCita(idCita, precio);
                             break;
                         case 3:
                             ArrayList<Cita> citas = gCitas.obtenerTodasLasCitas();
@@ -79,7 +84,7 @@ public class main {
                             break;
                         case 4:
                             System.out.println("INGRESE EL ID DE LA CITA A MODIFICAR");
-                            String idCita = in.nextLine();
+                            idCita = in.nextLine();
                             String mensajeCita = gCitas.modificarCita(idCita);
                             System.out.println(mensajeCita);
                             break;
