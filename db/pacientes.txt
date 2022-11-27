@@ -1,4 +1,4 @@
 1234567891,Lenin Alarcon,20,lenin@correo.com
-56371839432,Julio,20,julio@correo.com
-1258765674,Mauricio Velez,34,mauricio@epn.edu.ec
+56371839432,Julio,65,julio@correo.com
+1258765674,Mauricio Velez,15,mauricio@epn.edu.ec
 2209876543,Frankz Lenin Alarcon,20,frankz@correo.com

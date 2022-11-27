@@ -26,10 +26,11 @@ public class GestorPagosTest {
     
     @Test
     public void given_cita_when_calcularPrecioCita_then_ok() {
+        //Parametros
         GestorPagos gestorPagos =  new GestorPagos();
         GestorCitasMedicas gestorCitas = new GestorCitasMedicas();
         Cita cita = gestorCitas.obtenerCita("2589372");
-        double esperado = 90;
+        double esperado = 32;
         double actual = gestorPagos.calcularPrecioCita(cita);
         
         assertEquals(esperado, actual, 0.01);
@@ -44,4 +45,11 @@ public class GestorPagosTest {
         assertEquals(esperado, actual, 0.1);        
     }    
     
+    @Test
+    public void given_precio_y_meses_when_diferirPagoEnMeses_then_ok() {
+        GestorPagos gestorPagos =  new GestorPagos();
+        double esperado = 11.5;
+        double actual = gestorPagos.diferirPagoEnMeses(110, 12);
+        assertEquals(esperado, actual, 0.01);
+    }
 }
